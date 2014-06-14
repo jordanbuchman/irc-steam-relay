@@ -46,7 +46,7 @@ module.exports = function(details) {
     
     if (parts && parts[1] in triggers) {
       irc.whois(from, function(info) {
-        if (info.channels.indexOf('@' + details.channel) == -1)
+        if (info.channels.indexOf('~' + details.channel) == -1 && info.channels.indexOf('&' + details.channel) == -1 && info.channels.indexOf('@' + details.channel) == -1)
           return; // not OP, go away
         
         Object.keys(steam.users).filter(function(steamID) {
